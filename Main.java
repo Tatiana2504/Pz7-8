@@ -3,60 +3,36 @@ package com.metanit;
 public class Main {
 
     public static void main(String[] args) {
-        Printable printable = createPrintable("Foreign Affairs",false);
-        printable.print();
-
-        read(new Book("Java for impatients", "Cay Horstmann"));
-        read(new Journal("Java Dayly News"));
-    }
-
-    static void read(Printable p){
-
-        p.print();
-    }
-
-    static Printable createPrintable(String name, boolean option){
-
-        if(option)
-            return new Book(name, "Undefined");
-        else
-            return new Journal(name);
+        Button button = new Button(new ButtonClickHandler());
+        button.click();
+        button.click();
+        button.click();
     }
 }
-interface Printable{
 
-    void print();
-}
-class Book implements Printable{
+class ButtonClickHandler implements EventHandler{
 
-    String name;
-    String author;
+    public void execute(){
 
-    Book(String name, String author){
-
-        this.name = name;
-        this.author = author;
-    }
-
-    public void print() {
-
-        System.out.printf("%s (%s) \n", name, author);
+        System.out.println("Кнопка нажата!");
     }
 }
-class Journal implements Printable {
 
-    private String name;
+interface EventHandler{
 
-    String getName(){
-        return name;
+    void execute();
+}
+
+class Button{
+
+    EventHandler handler;
+    Button(EventHandler action){
+
+        this.handler=action;
     }
+    public void click(){
 
-    Journal(String name){
-
-        this.name = name;
-    }
-    public void print() {
-        System.out.println(name);
+        handler.execute();
         }
     }
 
