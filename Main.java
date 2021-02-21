@@ -3,23 +3,13 @@ package com.metanit;
 public class Main {
 
     public static void main(String[] args) {
-        Operation op = Operation.SUM;
-        System.out.println(op.action(10, 4));   // 14
-        op = Operation.MULTIPLY;
-        System.out.println(op.action(6, 4));    // 24
+Car c1=new Car("Mercedes-Benz","S-klassa","s500",7000000,2015);
+c1.println();
+Car c2=new Car("BMW","7Series","750Li",7050000,2016);
+c2.println();
+Car c3=new Car("Audi","A8","Long",7450000,2016);
+c3.println();
     }
-}
-enum Operation{
-    SUM{
-        public int action(int x, int y){ return x + y;}
-    },
-    SUBTRACT{
-        public int action(int x, int y){ return x - y;}
-    },
-    MULTIPLY{
-        public int action(int x, int y){ return x * y;}
-    };
-    public abstract int action(int x, int y);
 }
 
 
